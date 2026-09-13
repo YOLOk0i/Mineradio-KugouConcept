@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, shell, screen, session, globalShortcut, dialog, Tray, Menu, protocol, desktopCapturer, powerMonitor, safeStorage } = require('electron');
+const { app, BrowserWindow, ipcMain, shell, screen, session, globalShortcut, dialog, Tray, Menu, protocol, desktopCapturer, powerMonitor, safeStorage, crashReporter } = require('electron');
 const net = require('net');
 const http = require('http');
 const path = require('path');
@@ -30,6 +30,28 @@ const { clearSpotifyToken } = require('../spotify-api');
 
 registerWallpaperEngineScheme(protocol);
 registerLocalMusicScheme(protocol);
+
+// Keep local crash dumps for renderer/GPU crashes (no upload). Must run before app ready.
+try {
+  crashReporter.start({ uploadToServer: false });
+} catch (error) {
+  console.warn('[CrashReporter] start failed:', error && error.message);
+}
+
+app.on('child-process-gone', (_event, details) => {
+  const type = String((details && details.type) || 'unknown');
+  const reason = String((details && details.reason) || 'unknown');
+  if (reason === 'clean-exit') return;
+  const exitCode = Number((details && details.exitCode) || 0);
+  const service = String((details && details.service) || '');
+  const name = String((details && details.name) || '');
+  console.error('[ChildProcessGone]', type, reason, exitCode, service, name);
+  writeStartupErrorLog(
+    `Runtime child process gone (${type})`,
+    'MR-RUNTIME-CHILD-GONE',
+    new Error(`child process gone: type=${type} reason=${reason} exitCode=${exitCode} service=${service} name=${name}`)
+  );
+});
 
 let mainWindow = null;
 let localServer = null;

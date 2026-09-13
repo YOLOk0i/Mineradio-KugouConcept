@@ -525,7 +525,8 @@ function restoreSourceFallbackQueueItem(idx, originalSong, candidateSong, expect
   if (title) title.textContent = playQueue[idx].name || playQueue[idx].title || '';
   if (artist) artist.textContent = playQueue[idx].artist || '';
   safeRenderQueuePanel('source-fallback-rollback', { scrollCurrent: miniQueueOpen });
-  safeShelfRebuild('source-fallback-rollback');
+  if (typeof scheduleShelfRebuild === 'function') scheduleShelfRebuild('source-fallback-rollback');
+  else safeShelfRebuild('source-fallback-rollback');
   return true;
 }
 function settleSourceFallbackTerminal(idx, token, message, opts) {
@@ -638,7 +639,8 @@ async function skipFailedQueueItem(idx, token, message, opts) {
     sourceFallbackQueuePlaybackOptions(opts.playbackOpts || {}, recovery),
     { skipShuffleOrder: true }
   );
-  var nextStarted = await playQueueAt(nextIdx, nextPlaybackOpts);
+  var nextStarted = await awaitSourceFallbackBudget(playQueueAt(nextIdx, nextPlaybackOpts), recovery);
+  if (nextStarted === sourceFallbackBudgetTimeoutResult) nextStarted = false;
   if (nextStarted === true) completeSourceFallbackRecovery(recovery);
   else if (sourceFallbackRecoveryIdentityActive(recovery) && !sourceFallbackRecoveryCanContinue(recovery)) {
     return settleSourceFallbackTerminal(currentIdx, trackSwitchToken, '自动恢复已达到时间上限，请稍后手动重试。', terminalOpts);
@@ -707,7 +709,8 @@ async function tryAutoPlaybackFallback(song, data, idx, token, opts) {
       var committedCandidate = hydrateCustomCover(alternate);
       playQueue[idx] = committedCandidate;
       safeRenderQueuePanel('source-fallback-provisional', { scrollCurrent: miniQueueOpen });
-      safeShelfRebuild('source-fallback-provisional');
+      if (typeof scheduleShelfRebuild === 'function') scheduleShelfRebuild('source-fallback-provisional');
+      else safeShelfRebuild('source-fallback-provisional');
       var fallbackPlaybackOpts = {
         fallbackDepth: 1,
         startupAutoplay: !!opts.startupAutoplay,
@@ -722,7 +725,8 @@ async function tryAutoPlaybackFallback(song, data, idx, token, opts) {
       if (opts.resumeAt != null) fallbackPlaybackOpts.resumeAt = opts.resumeAt;
       var fallbackPromise = playQueueAt(idx, fallbackPlaybackOpts);
       var fallbackToken = trackSwitchToken;
-      var fallbackStarted = await fallbackPromise;
+      var fallbackStarted = await awaitSourceFallbackBudget(fallbackPromise, recovery);
+      if (fallbackStarted === sourceFallbackBudgetTimeoutResult) fallbackStarted = false;
       if (fallbackToken !== trackSwitchToken) return false;
       if (fallbackStarted === true) {
         completeSourceFallbackRecovery(recovery);

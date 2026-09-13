@@ -37,6 +37,7 @@
 
 ## 已知限制
 
+- **应用内自动更新仍指向原版仓库**：本二创的更新检测与下载入口沿用了原版配置，指向 [XxHuberrr/Mineradio](https://github.com/XxHuberrr/Mineradio) 的 Releases。**请勿使用应用内更新**，否则会拉取原版安装包、把二创覆盖回原版功能；如需新版本请到本仓库 [Releases](https://github.com/YOLOk0i/mineradio-kugou-lite/releases) 页面下载
 - 母带（viper 加密格式）音质不保证可用，上限为 Hi-Res / 无损
 - 若上游更新，需手动合入改动
 - 仅供学习交流，请遵守各音乐平台的用户协议与版权规则
@@ -48,6 +49,8 @@ npm install
 npm start          # 开发运行
 npm run build:win  # 生成 Windows NSIS 安装包（dist/）
 ```
+
+普通用户无需自己构建：直接到 [Releases](https://github.com/YOLOk0i/mineradio-kugou-lite/releases) 下载 `Mineradio-2.2.0-Setup.exe` 安装即可。
 
 ---
 

@@ -8981,14 +8981,27 @@ body.login-guide-active #login-guide-canvas {
   width: min(400px, calc(100vw - 40px));
   max-height: calc(100vh - 60px);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, .18) transparent;
   padding: 16px
+}
+
+.kugou-claim-modal::-webkit-scrollbar {
+  width: 5px
+}
+
+.kugou-claim-modal::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .18)
 }
 
 .kugou-claim-modal .lkcp-actions {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  margin-top: 10px
+  margin-top: 10px;
+  padding-right: 16px
 }
 
 .kugou-claim-modal .lkcp-progress {

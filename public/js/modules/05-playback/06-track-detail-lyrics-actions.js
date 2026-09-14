@@ -10,10 +10,9 @@ function songDurationLabel(song) {
 }
 function songSourceLabel(song) {
   if (!song) return '未知';
-  if (song.provider === 'spotify' || song.source === 'spotify' || song.type === 'spotify' || song.spotifyId || song.spotifyUri) return 'Spotify';
   if (song.provider === 'qq' || song.source === 'qq' || song.type === 'qq') return 'QQ 音乐';
   if (song.provider === 'qishui' || song.source === 'qishui' || song.type === 'qishui') return '汽水音乐';
-  if (song.provider === 'kugou' || song.source === 'kugou' || song.type === 'kugou' || song.hash || song.audioHash) return '酷狗音乐';
+  if (song.provider === 'kugou' || song.source === 'kugou' || song.type === 'kugou' || song.hash || song.audioHash) return '酷狗概念版';
   if (song.type === 'local') return '本地上传';
   if (song.type === 'podcast' || song.source === 'podcast') return '网易云播客';
   return '网易云音乐';
@@ -79,10 +78,6 @@ function currentAlbumKey(song) {
     var qqAlbumMid = song.albumMid || song.albummid || song.album_mid || '';
     return qqAlbumMid ? 'qq:' + qqAlbumMid : '';
   }
-  if (provider === 'spotify') {
-    var spotifyAlbumId = song.albumId || song.spotifyAlbumId || '';
-    return spotifyAlbumId ? 'spotify:' + spotifyAlbumId : '';
-  }
   if (provider === 'netease') {
     var albumId = song.albumId || song.album_id || '';
     return albumId ? 'netease:' + albumId : '';
@@ -103,10 +98,6 @@ function albumDetailUrlForSong(song) {
     var qqAlbumMid = song && (song.albumMid || song.albummid || song.album_mid || '');
     return qqAlbumMid ? '/api/qq/album/detail?mid=' + encodeURIComponent(qqAlbumMid) + '&limit=120' : '';
   }
-  if (provider === 'spotify') {
-    var spotifyAlbumId = song && (song.albumId || song.spotifyAlbumId || '');
-    return spotifyAlbumId ? '/api/spotify/album/detail?id=' + encodeURIComponent(spotifyAlbumId) + '&limit=100' : '';
-  }
   if (provider === 'netease') {
     var albumId = song && (song.albumId || song.album_id || '');
     return albumId ? '/api/album/detail?id=' + encodeURIComponent(albumId) + '&limit=120' : '';
@@ -121,10 +112,9 @@ function albumDetailMissingText(song) {
 }
 function albumCollectionConfig(song) {
   var provider = songProviderKey(song);
-  var albumId = song && (song.albumId || song.album_id || song.spotifyAlbumId || '');
+  var albumId = song && (song.albumId || song.album_id || '');
   if (!albumId) return null;
   if (provider === 'netease') return { provider: provider, id: String(albumId), endpoint: '/api/album/subscribe', field: 'subscribed', label: '网易云' };
-  if (provider === 'spotify') return { provider: provider, id: String(albumId), endpoint: '/api/spotify/album/like', field: 'like', label: 'Spotify' };
   if (provider === 'qishui') return { provider: provider, id: String(albumId), endpoint: '/api/qishui/album/collect', field: 'collected', label: '汽水音乐' };
   return null;
 }
@@ -157,9 +147,6 @@ function syncAlbumCollectionState(song) {
   if (config.provider === 'netease') {
     url = '/api/album/subscribe/check?ids=' + encodeURIComponent(config.id);
     responseField = 'subscribed';
-  } else if (config.provider === 'spotify') {
-    url = '/api/spotify/album/like/check?ids=' + encodeURIComponent(config.id);
-    responseField = 'liked';
   }
   if (!url) return;
   apiJson(url).then(function (result) {
@@ -1151,19 +1138,6 @@ var SONG_ACCOUNT_ACTION_ADAPTERS = {
     playlistCreateUrl: '',
     playlistTracksUrl: '/api/kugou/playlist/tracks'
   },
-  spotify: {
-    provider: 'spotify',
-    label: 'Spotify',
-    like: true,
-    collect: true,
-    createPlaylist: true,
-    likeCheckUrl: '/api/spotify/song/like/check',
-    likeCheckParam: 'ids',
-    likeUrl: '/api/spotify/song/like',
-    playlistAddUrl: '/api/spotify/playlist/add-song',
-    playlistCreateUrl: '/api/spotify/playlist/create',
-    playlistTracksUrl: '/api/spotify/playlist/tracks'
-  },
   qishui: {
     provider: 'qishui',
     label: '汽水音乐',
@@ -1189,7 +1163,6 @@ var SONG_ACCOUNT_ACTION_ADAPTERS = {
 function songAccountProvider(song) {
   if (!song || song.type === 'local' || song.type === 'podcast' || song.source === 'podcast') return 'local';
   if (typeof songProviderKey === 'function') return songProviderKey(song);
-  if (song.provider === 'spotify' || song.source === 'spotify' || song.type === 'spotify' || song.spotifyId || song.spotifyUri) return 'spotify';
   if (song.provider === 'qq' || song.source === 'qq' || song.type === 'qq') return 'qq';
   if (song.provider === 'qishui' || song.source === 'qishui' || song.type === 'qishui') return 'qishui';
   if (song.provider === 'kugou' || song.source === 'kugou' || song.type === 'kugou' || song.hash || song.audioHash) return 'kugou';
@@ -1205,10 +1178,6 @@ function songAccountIdentityValues(song, provider) {
   var raw = [];
   if (provider === 'kugou') {
     raw = [song.hash, song.audioHash, song.fileHash, song.providerSongId, song.id];
-  } else if (provider === 'spotify') {
-    raw = [song.spotifyId, song.providerSongId, song.id];
-    var uri = String(song.spotifyUri || song.uri || '');
-    if (/^spotify:track:/i.test(uri)) raw.push(uri.split(':').pop());
   } else if (provider === 'qishui') {
     raw = [song.providerSongId, song.trackId, song.track_id, song.id];
   } else {
@@ -1234,10 +1203,9 @@ function songAccountStateKey(song) {
 }
 function playlistAccountProvider(playlist) {
   var provider = String(playlist && (playlist.provider || playlist.source) || '').toLowerCase();
-  return /^(mineradio|netease|qq|kugou|qishui|spotify)$/.test(provider) ? provider : 'netease';
+  return /^(mineradio|netease|qq|kugou|qishui)$/.test(provider) ? provider : 'netease';
 }
 function songAccountLoginStatus(provider) {
-  if (provider === 'spotify') return spotifyLoginStatus || {};
   if (provider === 'qishui') return qishuiLoginStatus || {};
   if (provider === 'kugou') return kugouLoginStatus || {};
   if (provider === 'qq') return qqLoginStatus || {};
@@ -1323,7 +1291,7 @@ function syncLikeStatusForSongs(songs) {
   var requests = [];
   providers.forEach(function (provider) {
     var group = groups[provider];
-    var batchSize = provider === 'spotify' || provider === 'qishui' ? 40 : (provider === 'kugou' ? 50 : 200);
+    var batchSize = provider === 'qishui' ? 40 : (provider === 'kugou' ? 50 : 200);
     for (var offset = 0; offset < group.ids.length; offset += batchSize) {
       (function (batchIds) {
         var url = group.adapter.likeCheckUrl + '?' + group.adapter.likeCheckParam + '=' + encodeURIComponent(batchIds.join(','));
@@ -1358,7 +1326,7 @@ function syncLikeStatusForSong(song) {
 }
 function isLikedPlaylistContext(id, title, meta) {
   var rawId = String(id || '');
-  var idParts = rawId.match(/^(netease|qq|kugou|qishui|spotify):(.*)$/);
+  var idParts = rawId.match(/^(netease|qq|kugou|qishui):(.*)$/);
   var provider = idParts ? idParts[1] : playlistAccountProvider(meta);
   var sid = idParts ? idParts[2] : rawId;
   var text = String(title || (meta && meta.name) || '').trim();
@@ -1561,7 +1529,7 @@ async function verifySongInPlaylist(pid, song) {
   var provider = songAccountProvider(song);
   var adapter = songAccountAdapter(provider);
   if (!pid || !adapter || !adapter.playlistTracksUrl || !songAccountId(song, provider)) return false;
-  var pageLimit = provider === 'spotify' || provider === 'qishui' ? 50 : 200;
+  var pageLimit = provider === 'qishui' ? 50 : 200;
   for (var attempt = 0; attempt < 3; attempt++) {
     if (attempt) {
       await new Promise(function (resolve) { setTimeout(resolve, attempt === 1 ? 360 : 820); });

@@ -64,7 +64,6 @@ function lyricTimingSongKey(song) {
   if (!song) return '';
   if (typeof queueItemKey === 'function') return queueItemKey(song);
   if (typeof songCustomCoverKey === 'function') return songCustomCoverKey(song);
-  if (song.provider === 'spotify' || song.source === 'spotify' || song.type === 'spotify' || song.spotifyId || song.spotifyUri) return 'spotify:' + (song.spotifyId || song.id || song.spotifyUri || song.uri || (song.name + '|' + song.artist));
   if (song.provider === 'qq' || song.source === 'qq' || song.type === 'qq') return 'qq:' + (song.mid || song.songmid || song.id || (song.name + '|' + song.artist));
   if (song.type === 'podcast' && song.programId) return 'podcast:' + song.programId;
   if (song.localKey) return 'local:' + song.localKey;

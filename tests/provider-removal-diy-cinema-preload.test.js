@@ -20,8 +20,8 @@ test('removed provider has no user-facing or callable login surface', () => {
   assert.doesNotMatch(accounts, /ACCOUNT_PROVIDER_KEYS\s*=\s*\[[^\]]*spotify/);
   assert.doesNotMatch(startup, /refreshSpotifyLoginStatus\(\)|startSpotifyLoginStatusAutoRefresh\(\)/);
   assert.doesNotMatch(main + preload, /spotify-music-(?:open-login|verify-setup|clear-login)/);
+  assert.doesNotMatch(server, /spotify-api|handleSpotify[A-Z]|SpotifyApi/);
   assert.match(server, /PROVIDER_REMOVED/);
-  assert.match(server, /pn\.indexOf\('\/api\/spotify\/'\) === 0/);
 });
 
 test('fullscreen DIY control follows the bottom-most visible account pill', () => {

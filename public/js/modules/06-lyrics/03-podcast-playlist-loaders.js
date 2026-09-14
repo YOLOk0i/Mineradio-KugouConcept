@@ -94,13 +94,11 @@ function playlistQueueSource(id) {
   if (raw.indexOf('qq:') === 0) return { provider: 'qq', id: raw.slice(3), requestId: raw };
   if (raw.indexOf('kugou:') === 0) return { provider: 'kugou', id: raw.slice(6), requestId: raw };
   if (raw.indexOf('qishui:') === 0) return { provider: 'qishui', id: raw.slice(7), requestId: raw };
-  if (raw.indexOf('spotify:') === 0) return { provider: 'spotify', id: raw.slice(8), requestId: raw };
   return { provider: 'netease', id: raw, requestId: raw };
 }
 function playlistQueuePageSize(provider, initial) {
-  if (initial) return provider === 'kugou' || provider === 'qishui' ? 50 : (provider === 'spotify' ? 96 : PLAYLIST_QUEUE_INITIAL_BATCH_SIZE);
+  if (initial) return provider === 'kugou' || provider === 'qishui' ? 50 : PLAYLIST_QUEUE_INITIAL_BATCH_SIZE;
   if (provider === 'kugou' || provider === 'qishui') return 50;
-  if (provider === 'spotify') return 100;
   if (provider === 'qq') return 96;
   return PLAYLIST_QUEUE_BACKGROUND_BATCH_SIZE;
 }

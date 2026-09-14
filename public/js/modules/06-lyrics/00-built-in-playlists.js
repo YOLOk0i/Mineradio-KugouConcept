@@ -22,7 +22,7 @@ function applyBuiltInPlaylistSnapshot(result, opts) {
       reason: opts.reason || 'built-in-playlists'
     });
   } else {
-    userPlaylists = builtInPlaylists.concat(neteasePlaylists, qqPlaylists, kugouPlaylists, qishuiPlaylists, spotifyPlaylists);
+    userPlaylists = builtInPlaylists.concat(neteasePlaylists, qqPlaylists, kugouPlaylists, qishuiPlaylists);
     playlistCatalogRevision += 1;
   }
   return true;

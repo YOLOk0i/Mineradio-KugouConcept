@@ -1,6 +1,6 @@
 function fallbackHomeTiles() {
   return [
-    { kind: 'login', title: '登录同步歌单', sub: '网易云 / QQ / 酷狗 / 汽水' },
+    { kind: 'login', title: '登录同步歌单', sub: '网易云 / QQ / 酷狗概念版 / 汽水' },
     { kind: 'search', title: '搜索一首歌', sub: '原唱优先', query: '' },
     { kind: 'local', title: '导入本地音乐', sub: '本地文件也能可视化' },
     { kind: 'podcastSearch', title: '搜索播客', sub: '长内容 / 电台' },

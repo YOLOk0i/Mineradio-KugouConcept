@@ -860,7 +860,7 @@ function homePlatformRecommendationSourceLabel(source) {
     netease: '网易云',
     qishui: '汽水',
     qq: 'QQ 音乐',
-    kugou: '酷狗音乐',
+    kugou: '酷狗概念版',
   }[source] || '当前平台';
 }
 
@@ -1051,14 +1051,6 @@ function renderHomePlatformRecommendations() {
         sectionTitle = '你的音乐';
         cardLabel = '汽水喜欢 / 最近播放';
         readyText = '汽水推荐 Feed 暂不可用，当前显示你的喜欢与最近播放';
-      } else if (source === 'spotify' && feedState.mode === 'liked-affinity') {
-        sectionTitle = '你的喜欢';
-        cardLabel = 'Spotify 喜欢的歌曲';
-        readyText = '来自 Spotify Web API 的喜欢歌曲';
-      } else if (source === 'spotify' && feedState.mode === 'personal-top') {
-        sectionTitle = '你的常听';
-        cardLabel = 'Spotify 常听歌曲';
-        readyText = '来自 Spotify Web API 的个人常听';
       }
       status.textContent = readyText;
       list.innerHTML = '<section><h3>' + escHtml(sectionTitle) + '</h3><div class="home-platform-recommend-grid">' + feedState.songs.map(function (item, index) {
@@ -1207,7 +1199,7 @@ function bindHomePlatformRecommendationControls() {
     closeHomePlatformRecommendations();
     if (kind === 'netease-playlist' && typeof openHomePlaylist === 'function') openHomePlaylist(index);
     else if (kind === 'netease-song' && typeof playHomeSong === 'function') playHomeSong(index);
-    else if (/^(qishui|kugou|spotify)-song$/.test(kind)) playHomePlatformFeedSong(kind.replace(/-song$/, ''), index);
+    else if (/^(qishui|kugou)-song$/.test(kind)) playHomePlatformFeedSong(kind.replace(/-song$/, ''), index);
   });
   if (list) list.addEventListener('scroll', scheduleHomePlatformDailyWindowRender, { passive: true });
   window.addEventListener('resize', scheduleHomePlatformDailyWindowRender, { passive: true });

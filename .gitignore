@@ -25,10 +25,6 @@ win-unpacked/
 .qishui-oauth.json
 .qishui-qr-identity.json
 .qishui-qr-login.json
-.spotify-credentials.json
-spotify-credentials.json
-.spotify-token.json
-spotify-token.json
 listen-sync-journal.json
 login-easter-egg.json
 login-easter-egg-state.json

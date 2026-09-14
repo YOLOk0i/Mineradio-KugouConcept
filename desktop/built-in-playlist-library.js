@@ -30,6 +30,7 @@ function cleanText(value, fallback = '', maxLength = 1000) {
 
 function normalizeProvider(song) {
   const source = cleanText(song && (song.provider || song.source || song.type), '', 32).toLowerCase();
+  // legacy guard: data saved by old versions may still reference the removed provider
   if (source === 'spotify' || song && (song.spotifyId || song.spotifyUri)) return 'unsupported';
   if (source === 'local' || song && (song.localFileId || song.localKey || song.localUrl)) return 'local';
   if (source === 'qq') return 'qq';

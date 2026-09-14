@@ -393,7 +393,6 @@ html.desktop-shell-root body {
   --source-netease: #d95b67;
   --source-qq: #00F5D4;
   --source-qishui: #45d68f;
-  --source-spotify: #1ed760;
   --source-local: #9db8cf
 }
 
@@ -2129,11 +2128,7 @@ body.empty-home-active.diy-mode #search-area:not(.has-results) #search-mode-tabs
   background: rgba(69, 214, 143, .075)
 }
 
-.tag-source.spotify {
-  color: #d8ffe2;
-  border-color: rgba(30, 215, 96, .34);
-  background: rgba(30, 215, 96, .085)
-}
+
 
 .search-result.qq-source:hover {
   background: rgba(191, 214, 107, .052)
@@ -2147,9 +2142,7 @@ body.empty-home-active.diy-mode #search-area:not(.has-results) #search-mode-tabs
   background: rgba(69, 214, 143, .052)
 }
 
-.search-result.spotify-source:hover {
-  background: rgba(30, 215, 96, .052)
-}
+
 
 .search-result.netease-source:hover {
   background: rgba(217, 91, 103, .045)
@@ -4427,10 +4420,7 @@ body.desktop-shell.empty-home-active.controls-visible #empty-home {
   color: var(--source-qishui)
 }
 
-.account-source-dot.spotify {
-  background: var(--source-spotify);
-  color: var(--source-spotify)
-}
+
 
 .top-account-pill {
   position: relative;
@@ -9449,20 +9439,11 @@ body.login-guide-active #login-guide-canvas {
   color: #d7ffe5
 }
 
-.login-platform-tabs button.spotify.active,
-.user-platform-tabs button.spotify.active {
-  background: rgba(30, 215, 96, .14);
-  color: #d8ffe2
-}
-
 .login-node-providers.login-platform-tabs button.netease.active,
 .login-node-providers.login-platform-tabs button.qq.active,
 .login-node-providers.login-platform-tabs button.kugou.active,
 .login-node-providers.login-platform-tabs button.qishui.active,
-.login-node-providers.login-platform-tabs button.spotify.active {
-  background: linear-gradient(135deg, rgba(255, 255, 255, .064), rgba(var(--fc-accent-rgb), .026));
-  color: rgba(255, 255, 255, .95)
-}
+
 
 .login-node-providers.login-platform-tabs button.external-on,
 .login-node-providers.login-platform-tabs button.external-on.active {
@@ -9609,9 +9590,7 @@ body.login-guide-active #login-guide-canvas {
   box-shadow: 0 0 0 1px rgba(191, 214, 107, .10)
 }
 
-.qq-cookie-panel.spotify-guide-panel .qq-cookie-input {
-  height: 46px
-}
+
 
 .qq-cookie-actions {
   display: flex;
@@ -9621,10 +9600,7 @@ body.login-guide-active #login-guide-canvas {
   margin-top: 9px
 }
 
-.qq-cookie-panel.spotify-guide-panel .qq-cookie-actions {
-  align-items: flex-end;
-  flex-wrap: wrap
-}
+
 
 .qq-cookie-note {
   font-size: 10.5px;
@@ -9633,433 +9609,119 @@ body.login-guide-active #login-guide-canvas {
   text-align: left
 }
 
-.qq-cookie-panel.spotify-guide-panel .qq-cookie-note {
-  flex: 1 1 250px
-}
 
-.spotify-guide-title {
-  margin-bottom: 5px;
-  color: rgba(30, 215, 96, .82);
-  font-size: 11px;
-  font-weight: 700
-}
 
-.spotify-guide-steps {
-  display: grid;
-  gap: 3px
-}
 
-.spotify-guide-steps code {
-  color: rgba(255, 255, 255, .78);
-  font-family: inherit
-}
 
-.spotify-guide-actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 7px
-}
 
-.spotify-guide-link {
-  border: 1px solid rgba(30, 215, 96, .26);
-  border-radius: 8px;
-  background: rgba(30, 215, 96, .08);
-  color: rgba(232, 255, 238, .82);
-  padding: 5px 8px;
-  font-size: 10.5px;
-  line-height: 1;
-  cursor: pointer
-}
 
-.spotify-guide-link:hover {
-  border-color: rgba(30, 215, 96, .48);
-  color: #fff
-}
 
-.dual-login-modal.spotify-setup-open {
-  width: min(920px, calc(100vw - 44px));
-  min-width: min(920px, calc(100vw - 44px));
-  max-width: min(920px, calc(100vw - 44px))
-}
 
-.login-auth-drawer.spotify-mode {
-  grid-template-columns: minmax(0, 1fr);
-  align-items: stretch
-}
 
-.login-auth-drawer.spotify-mode.show {
-  max-height: min(650px, calc(100vh - 190px));
-  padding: 18px;
-  overflow: auto;
-  overscroll-behavior: contain
-}
 
-.login-auth-drawer.spotify-mode > .login-auth-copy,
-.login-auth-drawer.spotify-mode > .login-auth-body,
-.login-auth-drawer.spotify-mode > .login-auth-actions {
-  display: none
-}
 
-.spotify-setup-wizard {
-  display: none;
-  min-width: 0
-}
 
-.login-auth-drawer.spotify-mode .spotify-setup-wizard {
-  display: block
-}
 
-.spotify-setup-head {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 14px
-}
 
-.spotify-setup-head > div {
-  display: grid;
-  gap: 4px
-}
 
-.spotify-setup-head span {
-  color: rgba(30, 215, 96, .78);
-  font-size: 9.5px;
-  font-weight: 850;
-  letter-spacing: .17em
-}
 
-.spotify-setup-head b {
-  color: rgba(255, 255, 255, .94);
-  font-size: 18px;
-  letter-spacing: .02em
-}
 
-.spotify-setup-head small {
-  color: rgba(255, 255, 255, .43);
-  font-size: 10.5px;
-  text-align: right
-}
 
-.spotify-setup-progress {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 7px;
-  margin-bottom: 12px
-}
 
-.spotify-setup-progress span {
-  position: relative;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 7px 9px;
-  border: 1px solid rgba(255, 255, 255, .07);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, .025);
-  color: rgba(255, 255, 255, .42);
-  font-size: 10.5px;
-  white-space: nowrap;
-  transition: border-color .22s ease, background .22s ease, color .22s ease, transform .22s ease
-}
 
-.spotify-setup-progress i {
-  width: 18px;
-  height: 18px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .07);
-  color: rgba(255, 255, 255, .58);
-  font: 800 9px/1 inherit
-}
 
-.spotify-setup-progress span.current {
-  border-color: rgba(30, 215, 96, .34);
-  background: rgba(30, 215, 96, .075);
-  color: rgba(231, 255, 238, .92);
-  transform: translateY(-1px)
-}
 
-.spotify-setup-progress span.complete {
-  border-color: rgba(30, 215, 96, .20);
-  color: rgba(211, 255, 224, .72)
-}
 
-.spotify-setup-progress span.complete i {
-  background: rgba(30, 215, 96, .88);
-  color: #06160c
-}
 
-.spotify-setup-steps {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px
-}
 
-.spotify-setup-card {
-  position: relative;
-  min-width: 0;
-  display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
-  gap: 10px;
-  padding: 12px 12px 11px;
-  border: 1px solid rgba(255, 255, 255, .07);
-  border-radius: 13px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, .035), rgba(255, 255, 255, .014));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .045);
-  transition: opacity .22s ease, border-color .22s ease, box-shadow .22s ease, transform .22s ease
-}
 
-.spotify-setup-card.is-active {
-  border-color: rgba(30, 215, 96, .28);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, .16), inset 0 1px 0 rgba(255, 255, 255, .07);
-  transform: translateY(-1px)
-}
 
-.spotify-setup-card.is-complete {
-  border-color: rgba(30, 215, 96, .17)
-}
 
-.spotify-setup-card.is-locked {
-  opacity: .52
-}
 
-.spotify-setup-card.is-error {
-  border-color: rgba(255, 112, 125, .32)
-}
 
-.spotify-setup-card-number {
-  width: 32px;
-  height: 32px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  border: 1px solid rgba(30, 215, 96, .17);
-  background: rgba(30, 215, 96, .055);
-  color: rgba(30, 215, 96, .75);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: .06em
-}
 
-.spotify-setup-card-copy {
-  min-width: 0
-}
 
-.spotify-setup-card-copy > b {
-  display: block;
-  padding-right: 68px;
-  color: rgba(255, 255, 255, .89);
-  font-size: 12px;
-  line-height: 1.35
-}
 
-.spotify-setup-card-copy p {
-  margin: 5px 0 9px;
-  color: rgba(255, 255, 255, .47);
-  font-size: 10.5px;
-  line-height: 1.55
-}
 
-.spotify-setup-card-copy strong {
-  color: rgba(232, 255, 239, .78)
-}
 
-.spotify-setup-card-copy label {
-  display: block;
-  margin-bottom: 5px;
-  color: rgba(255, 255, 255, .52);
-  font-size: 9.5px;
-  font-weight: 700
-}
 
-#spotify-setup-client-id {
-  width: 100%;
-  height: 35px;
-  padding: 0 10px;
-  border: 1px solid rgba(255, 255, 255, .09);
-  border-radius: 9px;
-  outline: none;
-  background: rgba(0, 0, 0, .20);
-  color: rgba(255, 255, 255, .86);
-  font: 11px/1.2 Consolas, monospace
-}
 
-#spotify-setup-client-id:focus {
-  border-color: rgba(30, 215, 96, .42);
-  box-shadow: 0 0 0 2px rgba(30, 215, 96, .07)
-}
 
-#spotify-setup-redirect-uri {
-  display: block;
-  overflow: hidden;
-  padding: 9px 10px;
-  border: 1px solid rgba(30, 215, 96, .13);
-  border-radius: 9px;
-  background: rgba(0, 0, 0, .20);
-  color: rgba(226, 255, 235, .78);
-  font: 10.5px/1.3 Consolas, monospace;
-  text-overflow: ellipsis;
-  white-space: nowrap
-}
 
-.spotify-setup-card-actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 9px
-}
 
-.spotify-setup-card-actions button {
-  min-height: 29px;
-  padding: 0 10px;
-  border: 1px solid rgba(255, 255, 255, .09);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, .04);
-  color: rgba(255, 255, 255, .68);
-  font: 700 10px/1 inherit;
-  cursor: pointer;
-  transition: border-color .18s ease, background .18s ease, color .18s ease, transform .18s ease
-}
 
-.spotify-setup-card-actions button:hover:not(:disabled) {
-  border-color: rgba(255, 255, 255, .20);
-  color: #fff;
-  transform: translateY(-1px)
-}
 
-.spotify-setup-card-actions button.primary {
-  border-color: rgba(30, 215, 96, .30);
-  background: rgba(30, 215, 96, .10);
-  color: rgba(232, 255, 239, .88)
-}
 
-.spotify-setup-card-actions button.wide {
-  min-width: 150px
-}
 
-.spotify-setup-card-actions button:disabled {
-  opacity: .40;
-  cursor: not-allowed
-}
 
-.spotify-setup-card-state {
-  position: absolute;
-  top: 11px;
-  right: 11px;
-  max-width: 78px;
-  overflow: hidden;
-  color: rgba(255, 255, 255, .38);
-  font-size: 9px;
-  font-weight: 750;
-  text-overflow: ellipsis;
-  white-space: nowrap
-}
 
-.spotify-setup-card.is-complete .spotify-setup-card-state {
-  color: rgba(77, 236, 133, .84)
-}
 
-.spotify-setup-card.is-error .spotify-setup-card-state {
-  color: rgba(255, 140, 150, .88)
-}
 
-.spotify-setup-check-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 5px;
-  margin-top: 8px
-}
 
-.spotify-setup-check {
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 7px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, .027);
-  color: rgba(255, 255, 255, .46);
-  font-size: 9.5px
-}
 
-.spotify-setup-check::before {
-  content: '·';
-  width: 14px;
-  height: 14px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .07)
-}
 
-.spotify-setup-check.ok {
-  color: rgba(213, 255, 226, .76)
-}
 
-.spotify-setup-check.ok::before {
-  content: '✓';
-  background: rgba(30, 215, 96, .18);
-  color: #6df19b
-}
 
-.spotify-setup-check.fail {
-  color: rgba(255, 186, 192, .78)
-}
 
-.spotify-setup-check.fail::before {
-  content: '!';
-  background: rgba(255, 95, 112, .14);
-  color: #ff9ca6
-}
 
-.spotify-setup-overall {
-  margin-top: 10px;
-  padding: 9px 11px;
-  border-radius: 9px;
-  border: 1px solid rgba(255, 255, 255, .065);
-  background: rgba(0, 0, 0, .14);
-  color: rgba(255, 255, 255, .54);
-  font-size: 10.5px;
-  line-height: 1.45
-}
 
-.spotify-setup-overall.success {
-  border-color: rgba(30, 215, 96, .22);
-  color: rgba(219, 255, 230, .82)
-}
 
-.spotify-setup-overall.fail {
-  border-color: rgba(255, 103, 117, .22);
-  color: rgba(255, 190, 196, .82)
-}
 
-@media (max-width: 780px) {
-  .dual-login-modal.spotify-setup-open {
-    width: min(620px, calc(100vw - 28px));
-    min-width: 0;
-    max-width: min(620px, calc(100vw - 28px))
-  }
-  .spotify-setup-progress {
-    grid-template-columns: repeat(2, minmax(0, 1fr))
-  }
-  .spotify-setup-steps {
-    grid-template-columns: minmax(0, 1fr)
-  }
-  .spotify-setup-head {
-    align-items: start;
-    flex-direction: column;
-    gap: 5px
-  }
-  .spotify-setup-head small { text-align: left }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .qq-cookie-panel .modal-btn {
   padding: 8px 12px;
@@ -10136,11 +9798,7 @@ body.login-guide-active #login-guide-canvas {
   background: rgba(69, 214, 143, .08)
 }
 
-.account-provider-chip.spotify {
-  border-color: rgba(30, 215, 96, .26);
-  color: #d8ffe2;
-  background: rgba(30, 215, 96, .08)
-}
+
 
 .account-modal-actions {
   display: grid;

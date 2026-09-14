@@ -266,7 +266,7 @@ function beatMapSongKey(song) {
   if (song.type === 'local' && song.localKey) return 'local:' + song.localKey;
   var provider = songProviderKey(song) || 'netease';
   if (provider === 'qq') return 'qq:' + (song.mid || song.songmid || song.id || (song.name + '|' + song.artist));
-  var id = song.hash || song.fileHash || song.spotifyId || song.providerSongId || song.id;
+  var id = song.hash || song.fileHash || song.providerSongId || song.id;
   if (id != null && id !== '') {
     if (provider === 'netease') return 'song:' + id;
     var duration = Math.max(0, Number(song.duration || song.dt) || 0);

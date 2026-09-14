@@ -85,6 +85,7 @@ function createSandbox(queue, statusOverrides) {
     showToast() {},
     showSourceFallbackNotice(title, body) { notices.push({ title, body }); },
     document: { getElementById() { return null; }, body: { appendChild() {} } },
+    window: {},
     apiJson: async function () { return { songs: [] }; },
     resolveAlbumGaplessPlaybackData: async function () { return null; },
     playQueueAt: async function () { return false; },

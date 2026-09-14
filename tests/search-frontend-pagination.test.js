@@ -158,18 +158,15 @@ test('history rendering and replay keep the currently selected tab', () => {
 test('catalogue search readiness is separate from login state', () => {
   const statuses = {
     qishui: { loggedIn: false, searchReady: true, publicCatalog: true },
-    spotify: { loggedIn: false, searchReady: true },
-    spotifyOff: { loggedIn: false, searchReady: false },
   };
   const sandbox = {
     searchProviderStatus(provider) {
-      return provider === 'spotify-off' ? statuses.spotifyOff : (statuses[provider] || {});
+      return statuses[provider] || {};
     },
   };
   vm.runInNewContext(`${namedFunctionSource(searchSource, 'searchProviderCanSearch')}\nthis.canSearch = searchProviderCanSearch;`, sandbox);
   assert.equal(sandbox.canSearch('qishui'), true);
-  assert.equal(sandbox.canSearch('spotify'), true);
-  assert.equal(sandbox.canSearch('spotify-off'), false);
+  assert.equal(sandbox.canSearch('spotify'), false);
   assert.equal(sandbox.canSearch('netease'), true);
   assert.equal(sandbox.canSearch('qq'), true);
   assert.equal(sandbox.canSearch('kugou'), true);
@@ -209,7 +206,7 @@ test('search pagination carries provider offsets and ignores stale sessions', ()
   const sandbox = { encodeURIComponent };
   vm.runInNewContext(`${providerUrl}\nthis.url = searchProviderUrl;`, sandbox);
   assert.match(sandbox.url('qq', '晴天', 12, 24), /limit=12&offset=24$/);
-  assert.match(sandbox.url('spotify', 'Muse', 10, 30), /limit=10&offset=30$/);
+  assert.match(sandbox.url('netease', '晴天', 12, 24), /limit=12&offset=24$/);
 
   assert.match(searchSource, /fetchMusicSearchResults\(q, mode, previousPages\)/);
   assert.match(searchSource, /value\.nextOffset/);

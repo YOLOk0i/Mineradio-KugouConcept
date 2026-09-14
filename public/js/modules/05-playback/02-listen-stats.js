@@ -73,7 +73,7 @@ function listenReportProvider(snapshot) {
     (snapshot && (snapshot.provider || snapshot.sourceKey || snapshot.resolvedPlaybackProvider)) || ''
   ).trim().toLowerCase();
   if (provider === 'song' || provider === 'music') provider = 'netease';
-  if (/^(netease|qq|kugou|qishui|spotify)$/.test(provider) && typeof normalizePlaybackProvider === 'function') {
+  if (/^(netease|qq|kugou|qishui)$/.test(provider) && typeof normalizePlaybackProvider === 'function') {
     provider = normalizePlaybackProvider(provider);
   }
   return provider;
@@ -93,7 +93,6 @@ function reportListenSession(record, session, durationMs) {
       mixSongId: snapshot.mixSongId || '',
       albumId: snapshot.albumId || '',
       providerSongId: snapshot.providerSongId || '',
-      spotifyId: snapshot.spotifyId || '',
       uri: snapshot.uri || '',
       type: snapshot.type || 'song',
       sourceKey: snapshot.sourceKey || '',
@@ -169,8 +168,6 @@ function listenSongSnapshot(song) {
     mixSongId: song.mixSongId || song.mix_song_id || '',
     albumId: song.albumId || song.album_id || (song.album && song.album.id) || '',
     providerSongId: song.providerSongId || song.provider_song_id || '',
-    spotifyId: song.spotifyId || song.spotify_id || '',
-    uri: song.spotifyUri || song.uri || '',
     type: song.type || 'song',
     sourceKey: song.source || song.provider || '',
     name: song.name || song.title || '未知歌曲',
@@ -243,8 +240,6 @@ function finalizeListenSession(completed) {
     mixSongId: snap.mixSongId || '',
     albumId: snap.albumId || '',
     providerSongId: snap.providerSongId || '',
-    spotifyId: snap.spotifyId || '',
-    uri: snap.uri || '',
     type: snap.type || 'song',
     sourceKey: snap.sourceKey || '',
     provider: snap.provider || '',

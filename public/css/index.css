@@ -6823,6 +6823,11 @@ body:not(.controls-visible) .lyric-timing-control::before,
   transform: translateX(-50%) translateY(0) scale(1)
 }
 
+/* 队列弹层打开时，把底部栏整体提到搜索区(z-index:10)之上：弹层不再被搜索框/搜索历史遮住 */
+#bottom-bar:has(#mini-queue-popover.show) {
+  z-index: 12
+}
+
 .mini-queue-head {
   display: flex;
   align-items: flex-start;

@@ -376,7 +376,7 @@ function purgeSystemMemoryElevated(mask, options) {
     '$ErrorActionPreference = "Stop"',
     "$scriptPath = '" + escapePowerShellLiteral(scriptPath) + "'",
     "$resultPath = '" + escapePowerShellLiteral(resultPath) + "'",
-    'Start-Process -FilePath powershell.exe -Verb RunAs -Wait -ArgumentList @("-NoProfile","-ExecutionPolicy","Bypass","-File",$scriptPath) | Out-Null',
+    'Start-Process -FilePath powershell.exe -Verb RunAs -WindowStyle Hidden -Wait -ArgumentList @("-NoProfile","-ExecutionPolicy","Bypass","-WindowStyle","Hidden","-File",$scriptPath) | Out-Null',
     'if (Test-Path -LiteralPath $resultPath) { @{ ok=$true } | ConvertTo-Json -Compress } else { @{ ok=$false; needAdmin=$true; message="User cancelled or denied administrator permission." } | ConvertTo-Json -Compress }',
   ]);
   return runPowerShellFile(launcherPath, 120000).then((launcherResult) => {

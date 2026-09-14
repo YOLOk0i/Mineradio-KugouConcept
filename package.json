@@ -73,13 +73,13 @@
       "uninstallerSidebar": "build/installerSidebar.bmp",
       "installerHeader": "build/installerHeader.bmp",
       "include": "build/installer-kugou-lite.nsh",
-      "artifactName": "Mineradio-${version}-KugouLite-Setup.${ext}"
+      "artifactName": "Mineradio-${version}-KugouConcept-Setup.${ext}"
     },
     "publish": [
       {
         "provider": "github",
         "owner": "YOLOk0i",
-        "repo": "mineradio-kugou-lite"
+        "repo": "Mineradio-KugouConcept"
       }
     ]
   },
@@ -88,7 +88,7 @@
     "update": {
       "provider": "github",
       "owner": "YOLOk0i",
-      "repo": "mineradio-kugou-lite",
+      "repo": "Mineradio-KugouConcept",
       "preview": false,
       "preferMirrors": true,
       "mirrors": [

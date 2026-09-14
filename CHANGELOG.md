@@ -5,7 +5,7 @@
 - 二创首发：酷狗接口整体替换为酷狗概念版接口，支持 Hi-Res 音质逐档自动降级播放、每日 VIP 自动领取与自动签到助手。
 - 修复「当前队列」弹层被搜索框遮挡的问题（弹层打开时整体抬升底栏层级，并更新 CSS 版本号防磁盘缓存）。
 - 修复每 30 分钟自动清理内存时弹出空白「管理员: Windows PowerShell」窗口的问题（提权进程窗口改为隐藏，清理照常执行）。
-- 应用名（快捷方式 / 卸载项名）统一为 `Mineradio`；安装向导标题为「Mineradio 酷狗概念版」。二创识别由安装包名 `-KugouLite-`、独立 appId 与安装目录承担，可与官方原版同时安装、互不影响。
+- 应用名（快捷方式 / 卸载项名）统一为 `Mineradio`；安装向导标题为「Mineradio 酷狗概念版 安装」。二创标识统一为 `KugouConcept`（仓库名 `Mineradio-KugouConcept`、安装包 `Mineradio-<version>-KugouConcept-Setup.exe`、安装目录 `MineradioKugouConcept`、向导品牌小字 `MINERADIO KUGOU CONCEPT`），配合独立 appId 与数据目录，可与官方原版同时安装、互不影响。
 
 ## v2.2.0
 

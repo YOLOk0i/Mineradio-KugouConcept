@@ -1,9 +1,9 @@
-# Mineradio 酷狗版 · 酷狗概念版二创版
+# Mineradio · 酷狗概念版二创版
 
 > 本仓库是 [XxHuberrr/Mineradio](https://github.com/XxHuberrr/Mineradio)（v2.2.0，GPL-3.0）的**二创分支**，当前版本 **2.2.1**，
 > 核心改动：**将原版酷狗接口整体替换为酷狗概念版接口**（移植自 [Super-55/super_music_mineradio_basic](https://github.com/Super-55/super_music_mineradio_basic)），**实现 Hi-Res 音质播放**（最高 Hi-Res → 无损 → 高品质 → 标准逐档自动降级），并附带每日 VIP 自动领取与 QQ 音乐自动换源。
 >
-> 安装后应用名为 **Mineradio 酷狗版**，使用独立的 appId（`com.mineradio.kugou`）、安装目录与数据目录，**可与官方原版同时安装、互不影响**。
+> 应用名沿用 **Mineradio**（二创版识别为 `KugouLite`），但使用独立的 appId（`com.mineradio.kugou`）、安装目录（`MineradioKugou`）与数据目录，**可与官方原版同时安装、互不影响**。
 
 ![Mineradio 暗场启动页](./docs/assets/readme/cinema-beat-smoke.png)
 

@@ -78,16 +78,16 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "XxHuberrr",
-        "repo": "Mineradio"
+        "owner": "YOLOk0i",
+        "repo": "mineradio-kugou-lite"
       }
     ]
   },
   "mineradio": {
     "update": {
       "provider": "github",
-      "owner": "XxHuberrr",
-      "repo": "Mineradio",
+      "owner": "YOLOk0i",
+      "repo": "mineradio-kugou-lite",
       "preview": false,
       "preferMirrors": true,
       "mirrors": [

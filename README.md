@@ -1,7 +1,9 @@
-# Mineradio · 酷狗概念版二创版
+# Mineradio 酷狗版 · 酷狗概念版二创版
 
-> 本仓库是 [XxHuberrr/Mineradio](https://github.com/XxHuberrr/Mineradio)（v2.2.0，GPL-3.0）的**二创分支**，
+> 本仓库是 [XxHuberrr/Mineradio](https://github.com/XxHuberrr/Mineradio)（v2.2.0，GPL-3.0）的**二创分支**，当前版本 **2.2.1**，
 > 核心改动：**将原版酷狗接口整体替换为酷狗概念版接口**（移植自 [Super-55/super_music_mineradio_basic](https://github.com/Super-55/super_music_mineradio_basic)），**实现 Hi-Res 音质播放**（最高 Hi-Res → 无损 → 高品质 → 标准逐档自动降级），并附带每日 VIP 自动领取与 QQ 音乐自动换源。
+>
+> 安装后应用名为 **Mineradio 酷狗版**，使用独立的 appId（`com.mineradio.kugou`）、安装目录与数据目录，**可与官方原版同时安装、互不影响**。
 
 ![Mineradio 暗场启动页](./docs/assets/readme/cinema-beat-smoke.png)
 
@@ -37,7 +39,7 @@
 
 ## 已知限制
 
-- **更新检测已指向本仓库 Releases**（`package.json` → `mineradio.update`），不会再把用户引到原版安装包。但二创版本号当前与上游同为 `2.2.0`，**只有发布更高版本（如 2.2.1）后应用内才会提示更新**；在此之前请直接到本仓库 [Releases](https://github.com/YOLOk0i/mineradio-kugou-lite/releases) 下载新版本
+- **更新检测指向本仓库 Releases**（`package.json` → `mineradio.update`），不会再把用户引到原版安装包。当前二创版本号为 `2.2.1`（高于上游 `2.2.0`），只有在本仓库发布更高版本后，应用内才会提示更新；新旧版本也可以直接到 [Releases](https://github.com/YOLOk0i/mineradio-kugou-lite/releases) 手动下载
 - 母带（viper 加密格式）音质不保证可用，上限为 Hi-Res / 无损
 - 若上游更新，需手动合入改动
 - 仅供学习交流，请遵守各音乐平台的用户协议与版权规则
@@ -50,7 +52,7 @@ npm start          # 开发运行
 npm run build:win  # 生成 Windows NSIS 安装包（dist/）
 ```
 
-普通用户无需自己构建：直接到 [Releases](https://github.com/YOLOk0i/mineradio-kugou-lite/releases) 下载 `Mineradio-2.2.0-Setup.exe` 安装即可。
+普通用户无需自己构建：直接到 [Releases](https://github.com/YOLOk0i/mineradio-kugou-lite/releases) 下载 `Mineradio-2.2.1-KugouLite-Setup.exe` 安装即可。
 
 ---
 

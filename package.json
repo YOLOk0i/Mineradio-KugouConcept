@@ -1,7 +1,7 @@
 {
   "name": "mineradio",
-  "productName": "Mineradio",
-  "version": "2.2.0",
+  "productName": "Mineradio 酷狗版",
+  "version": "2.2.1",
   "description": "Windows 沉浸式音乐播放器，融合桌面模式、歌词舞台、粒子视觉和 3D 歌单架。",
   "author": "Mineradio",
   "license": "GPL-3.0-only",
@@ -14,8 +14,8 @@
     "build:win:internal-beta": "electron-builder --config electron-builder.internal-beta.json --win nsis --publish never"
   },
   "build": {
-    "appId": "com.mineradio.desktop",
-    "productName": "Mineradio",
+    "appId": "com.mineradio.kugou",
+    "productName": "Mineradio 酷狗版",
     "directories": {
       "output": "dist",
       "buildResources": "build"
@@ -66,14 +66,14 @@
       "allowToChangeInstallationDirectory": false,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Mineradio",
+      "shortcutName": "Mineradio 酷狗版",
       "installerIcon": "build/icon.ico",
       "uninstallerIcon": "build/icon.ico",
       "installerSidebar": "build/installerSidebar.bmp",
       "uninstallerSidebar": "build/installerSidebar.bmp",
       "installerHeader": "build/installerHeader.bmp",
-      "include": "build/installer.nsh",
-      "artifactName": "Mineradio-${version}-Setup.${ext}"
+      "include": "build/installer-kugou-lite.nsh",
+      "artifactName": "Mineradio-${version}-KugouLite-Setup.${ext}"
     },
     "publish": [
       {
@@ -84,6 +84,7 @@
     ]
   },
   "mineradio": {
+    "runtimeName": "MineradioKugou",
     "update": {
       "provider": "github",
       "owner": "YOLOk0i",
